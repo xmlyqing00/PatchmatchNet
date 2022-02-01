@@ -5,9 +5,9 @@ clc
 
 % script to calculate distances have been measured for all included scans (UsedSets)
 
-dataPath='/home/SampleSet/MVS Data/';
-plyPath='/home/PatchmatchNet/outputs/';
-resultsPath='/home/PatchmatchNet/outputs/';
+dataPath='/Ship03/dataset/dtu_eval/SampleSet/MVS Data';
+plyPath='/Ship03/Sources/MVS/PatchmatchNet/outputs/dtu_test';
+resultsPath='/Ship03/Sources/MVS/PatchmatchNet/eval_outputs';
 
 method_string='patchmatchnet';
 light_string='l3'; % l3 is the setting with all lights on, l7 is randomly sampled between the 7 settings (index 0-6)
@@ -30,7 +30,8 @@ for cIdx=1:length(UsedSets)
     %Data set number
     cSet = UsedSets(cIdx)
     %input data name
-    DataInName=[plyPath sprintf('/%s%03d_%s%s.ply',lower(method_string),cSet,light_string,settings_string)]
+%     DataInName=[plyPath sprintf('/%s%03d_%s%s.ply',lower(method_string),cSet,light_string,settings_string)]
+    DataInName = [plyPath sprintf('/scan%d/fused.ply', cSet)]
     
     %results name
     %concatenate strings into one string

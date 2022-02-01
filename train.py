@@ -35,11 +35,12 @@ def train(
 
     for epoch_idx in range(start_epoch, args.epochs):
         print("Epoch {}:".format(epoch_idx + 1))
-        scheduler.step()
+        # scheduler.step()  old
 
         # training
         process_samples(args, train_sample, "train", logger, model, train_image_loader, optimizer, epoch_idx)
         logger.flush()
+        scheduler.step()
 
         # checkpoint and TorchScript module
         if (epoch_idx + 1) % args.save_freq == 0:
